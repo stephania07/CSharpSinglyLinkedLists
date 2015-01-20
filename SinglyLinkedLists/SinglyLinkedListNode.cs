@@ -15,22 +15,44 @@ namespace SinglyLinkedLists
         private SinglyLinkedListNode next;
         public SinglyLinkedListNode Next
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return this.next; }
+            set { 
+                if(this == value) 
+                {
+                    throw new ArgumentException("Can't set Next to this");
+                }
+                else
+                {
+                    this.next = value;
+                }
+            }
         }
 
-        private string value;
-        public string Value 
+        private string value;//field
+        public string Value //value
         {
-            get { throw new NotImplementedException(); }
+            get { return this.value; }
         }
-
+        public override string ToString()
+        {
+ 	        return Value;
+        }
+       
         public static bool operator <(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
         {
             // This implementation is provided for your convenience.
             return node1.CompareTo(node2) < 0;
         }
-
+        public override bool Equals(Object obj)
+        {
+            if (this.value == obj.ToString())
+            {
+                return true;
+            }
+            return false;
+        }
+ 
+    
         public static bool operator >(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
         {
             // This implementation is provided for your convenience.
@@ -39,8 +61,7 @@ namespace SinglyLinkedLists
 
         public SinglyLinkedListNode(string value)
         {
-            throw new NotImplementedException();
-
+            this.value = value;
             // Used by the visualizer:
             allNodes.Add(this);
         }
@@ -53,7 +74,14 @@ namespace SinglyLinkedLists
 
         public bool IsLast()
         {
-            throw new NotImplementedException();
+            if(this.next == null) 
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
