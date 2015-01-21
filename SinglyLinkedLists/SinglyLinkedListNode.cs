@@ -16,8 +16,9 @@ namespace SinglyLinkedLists
         public SinglyLinkedListNode Next
         {
             get { return this.next; }
-            set { 
-                if(this == value) 
+            set
+            {
+                if (this == value)
                 {
                     throw new ArgumentException("Can't set Next to this");
                 }
@@ -35,9 +36,9 @@ namespace SinglyLinkedLists
         }
         public override string ToString()
         {
- 	        return Value;
+            return Value;
         }
-       
+
         public static bool operator <(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
         {
             // This implementation is provided for your convenience.
@@ -45,14 +46,21 @@ namespace SinglyLinkedLists
         }
         public override bool Equals(Object obj)
         {
-            if (this.value == obj.ToString())
+            if (this.GetType() == obj.GetType())
             {
-                return true;
+
+                if (this.value == obj.ToString())
+                {
+                    return true;
+                }
             }
             return false;
         }
+     
+
  
-    
+
+
         public static bool operator >(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
         {
             // This implementation is provided for your convenience.
@@ -74,7 +82,8 @@ namespace SinglyLinkedLists
 
         public bool IsLast()
         {
-            if(this.next == null) 
+
+            if (this.next == null)
             {
                 return true;
             }
@@ -85,3 +94,6 @@ namespace SinglyLinkedLists
         }
     }
 }
+        
+    
+
