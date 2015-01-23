@@ -142,7 +142,15 @@ namespace SinglyLinkedLists
 
         public string[] ToArray()
         {
-            return new string [] { };
+            List<string> arr = new List<string> { };
+            SinglyLinkedListNode node = firstNode;
+            while (node != null)
+            {
+                arr.Add(node.ToString());
+                node = node.Next;
+            }
+            return arr.ToArray();
+
         }
         public override string ToString() 
         {
@@ -151,11 +159,6 @@ namespace SinglyLinkedLists
             {
                 return "{ }";
             }
-            //else
-            //{
-
-            //    return "{ \"" + node.Value + "\" }";
-            //}   
             else if (node.Next == null)
             {
                 return "{ \"" + node.Value + "\" }";
