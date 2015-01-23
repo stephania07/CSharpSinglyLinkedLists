@@ -44,8 +44,9 @@ namespace SinglyLinkedLists
             }
             else
             {
-                firstNode.Next = new SinglyLinkedListNode(value);
+               LastNode().Next = new SinglyLinkedListNode(value);
             }
+                
         }
         // NOTE: There is more than one way to accomplish this.  One is O(n).  The other is O(1).
         public int Count()
@@ -55,8 +56,33 @@ namespace SinglyLinkedLists
 
         public string ElementAt(int index)
         {
-            throw new NotImplementedException();
-        }
+            SinglyLinkedListNode currentNode = firstNode;
+            //Solution 1:
+            //for (int i = 0; i < index; i++)
+            //{
+            //    if (currentNode.IsLast())
+            //    {
+            //        throw new ArgumentOutOfRangeException();
+            //    }
+            //    currentNode = currentNode.Next;
+            //}
+            //soloution 2:
+                //for (int if = 0; if < index; i++) {
+                //    currentNode = (currentNode == null) ? null : currentNode.Next;
+                //}
+            //solutuion  3:
+             while (index > 0 && currentNode != null)
+                {
+                    index--;
+                    currentNode = currentNode.Next;
+                }
+             if (currentNode == null)
+             {
+                 throw new ArgumentOutOfRangeException();
+             }
+                return currentNode.Value;
+
+        }     
 
         public string First()
         {
@@ -85,7 +111,23 @@ namespace SinglyLinkedLists
         // HINT 3: If you highlight code and right click, you can use the refactor menu to extract a method for you...
         public string Last()
         {
-            throw new NotImplementedException();
+            var lastNode = LastNode();
+            return (lastNode == null) ? null : lastNode.Value;
+        }
+        private SinglyLinkedListNode LastNode()
+        {
+            if (firstNode == null)
+            {
+                return null;
+            }
+
+            SinglyLinkedListNode lastNode = firstNode;
+
+            while (!lastNode.IsLast())
+            {
+                lastNode = lastNode.Next;
+            }
+            return lastNode;
         }
 
         public void Remove(string value)
@@ -102,5 +144,27 @@ namespace SinglyLinkedLists
         {
             throw new NotImplementedException();
         }
+        public override string ToString() 
+        {
+            SinglyLinkedListNode node = firstNode;
+            if (node == null)
+            {
+                return "{ }";
+            }
+            //else
+            //{
+
+            //    return "{ \"" + node.Value + "\" }";
+            //}   
+            else if (node.Next == null)
+            {
+                return "{ \"" + node.Value + "\" }";
+            }
+            else
+            {
+                return "{ \"" + node.Value +" "+node.Next.Value +"\" }";
+            }
+        }
+
     }
 }

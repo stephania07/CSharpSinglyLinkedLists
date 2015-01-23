@@ -34,11 +34,7 @@ namespace SinglyLinkedLists
         {
             get { return this.value; }
         }
-        public override string ToString()
-        {
-            return Value;
-        }
-
+       
         public static bool operator <(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
         {
             // This implementation is provided for your convenience.
@@ -46,21 +42,8 @@ namespace SinglyLinkedLists
         }
         public override bool Equals(Object obj)
         {
-            if (this.GetType() == obj.GetType())
-            {
-
-                if (this.value == obj.ToString())
-                {
-                    return true;
-                }
-            }
-            return false;
+            return this.CompareTo(obj) == 0;
         }
-     
-
- 
-
-
         public static bool operator >(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
         {
             // This implementation is provided for your convenience.
@@ -77,21 +60,19 @@ namespace SinglyLinkedLists
         // READ: http://msdn.microsoft.com/en-us/library/system.icomparable.compareto.aspx
         public int CompareTo(Object obj)
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode node = obj as SinglyLinkedListNode;
+            return node == null ? 1 : this.value.CompareTo(node.value);
         }
 
         public bool IsLast()
         {
-
-            if (this.next == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return next == null;
         }
+        public override string ToString()
+        {
+            return Value;
+        }
+
     }
 }
         
