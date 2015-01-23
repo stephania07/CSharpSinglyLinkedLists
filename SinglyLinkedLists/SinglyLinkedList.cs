@@ -142,7 +142,7 @@ namespace SinglyLinkedLists
 
         public string[] ToArray()
         {
-            throw new NotImplementedException();
+            return new string [] { };
         }
         public override string ToString() 
         {
@@ -162,7 +162,17 @@ namespace SinglyLinkedLists
             }
             else
             {
-                return "{ \"" + node.Value +" "+node.Next.Value +"\" }";
+                StringBuilder sb = new StringBuilder();
+                StringBuilder sb1 = new StringBuilder();
+                StringBuilder sb2 = new StringBuilder();
+                sb1 = sb;
+                sb2 = sb1;
+                sb.Append("{ "+'"' + node.Value+'"' + ", ");
+                sb1.Append('"' + node.Next.Value + '"' + ", ");
+                sb2.Append('"' + node.Next.Next.Value + '"'+" }");
+                return (sb.ToString());
+
+                //return "{ \""+ node.Value+'"' +"," + " "+ '"'+node.Next.Value+'"' +","+" "+ '"'+node.Next.Next.Value + "\" }";
             }
         }
 
